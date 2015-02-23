@@ -1,0 +1,69 @@
+<!doctype html>
+<html class="no-js" lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+		<!-- Place favicon.ico in the root directory -->
+
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+		
+		<section id="main">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<h3 id="date"></h3> 
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-11 col-md-11 text-center">
+						<div id="image-wrapper">
+							<div id="canvas-wrapper"></div>
+							<div id="zoom-wrapper">
+								<div id="zoom-inner"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-1 col-md-1">
+						<div id="controls-wrapper">
+							<button class="btn btn-default" id="zoom-button">ZOOM</button>
+							<button class="btn btn-default disabled" id="zoom-close-button">CLOSE</button>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<div id="thumb-wrapper"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+		<script src="js/Utils.js"></script>
+		<script src="js/DBG.js"></script>
+		<script src="js/Zoom.js"></script>
+		<script src="js/main.js"></script>
+		
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+		<script>
+			(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+				function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+				e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+				e.src='//www.google-analytics.com/analytics.js';
+				r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+				ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+		</script>
+	</body>
+</html>

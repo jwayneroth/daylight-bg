@@ -1,0 +1,39 @@
+@import "bootstrap-variables";
+@import "bootstrap-custom";
+
+#main {
+	background-color: #efefef;
+}
+
+canvas {
+	width:100%;
+	height:100%;
+}
+
+#image-wrapper {
+	position:relative;
+	overflow:hidden;
+	width:100%;
+	height:auto;
+}
+
+#canvas-wrapper {
+
+}
+
+#zoom-wrapper {
+	position: absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	
+	&.active {
+		overflow:scroll;
+		//cursor:all-scroll;
+	}
+	#inner {
+		
+	}
+}
