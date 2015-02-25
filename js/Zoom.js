@@ -49,7 +49,7 @@ var JWR = JWR || {};
 	*/
 	Zoom.loadImage = function() {
 		
-		var imgName = JWR.DBG.getCurrentImageName();
+		var imgName = JWR.BGExpand.getCurrentImageName();
 		
 		if(!imgName) return;
 		

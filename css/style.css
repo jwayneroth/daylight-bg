@@ -8538,11 +8538,6 @@ button.close {
     display: none !important;
   }
 }
-/* line 4, ../scss/style.scss */
-#main {
-  background-color: #efefef;
-}
-
 /* line 8, ../scss/style.scss */
 canvas {
   width: 100%;

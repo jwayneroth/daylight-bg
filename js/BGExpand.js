@@ -2,15 +2,15 @@ var JWR = JWR || {};
 
 (function($) {
 
-	function DBG() {}
+	function BGExpand() {}
 	
-	DBG.inited = false;
-	DBG.el = null;
-	DBG.imagesLoaded = 0;
-	DBG.currentImage = 0;
-	DBG.canvasWidth = 900;//$(window).width();//900;
-	DBG.canvasHeight = 720;//$(window).height();//720;
-	DBG.imageSources = [
+	BGExpand.inited = false;
+	BGExpand.el = null;
+	BGExpand.imagesLoaded = 0;
+	BGExpand.currentImage = 0;
+	BGExpand.canvasWidth = 900;//$(window).width();//900;
+	BGExpand.canvasHeight = 720;//$(window).height();//720;
+	BGExpand.imageSources = [
 		//"DSCN0024-2.jpg"
 		"IMG_1171.jpg"
 		,"IMG_1155.jpg"
@@ -20,15 +20,15 @@ var JWR = JWR || {};
 		,"000_0912.jpg"
 		,"DSCN0024.jpg"
 	];
-	DBG.imageArray = null;
+	BGExpand.imageArray = null;
 	
 	/*
 	 * init
 	 * load our images
 	*/
-	DBG.init = function() {
+	BGExpand.init = function() {
 		
-		console.log('DBG:init');
+		console.log('BGExpand:init');
 		
 		if(!this.inited) {
 			this.inited = false;
@@ -48,7 +48,7 @@ var JWR = JWR || {};
 	/*
 	 * onImageLoaded
 	*/
-	DBG.onImageLoaded = function() {
+	BGExpand.onImageLoaded = function() {
 		
 		this.imagesLoaded++;
 		
@@ -69,7 +69,7 @@ var JWR = JWR || {};
 	 * onWrapperClick
 	 * render next image
 	*/
-	DBG.onWrapperClick = function() {
+	BGExpand.onWrapperClick = function() {
 		
 		this.currentImage++;
 		
@@ -84,7 +84,7 @@ var JWR = JWR || {};
 	/*
 	 * getCurrentImage
 	*/
-	DBG.getCurrentImageName = function() {
+	BGExpand.getCurrentImageName = function() {
 		if(this.imageArray) {
 			return this.imageSources[this.currentImage];
 		}
@@ -94,7 +94,7 @@ var JWR = JWR || {};
 	 * renderImage
 	 * blend image edge into the canvas behind it
 	*/
-	DBG.renderImage = function(image) {
+	BGExpand.renderImage = function(image) {
 		
 		var canvas = document.createElement('canvas');
 		
@@ -132,7 +132,7 @@ var JWR = JWR || {};
 	/*
 	 * gradientCorners
 	*/
-	DBG.gradientCorners = function(ctx, pos, data) {
+	BGExpand.gradientCorners = function(ctx, pos, data) {
 		
 		var sw = pos.dx;
 		var sh = pos.dy;
@@ -217,7 +217,7 @@ var JWR = JWR || {};
 	/*
 	 * fillCorners
 	*/
-	DBG.fillCorners = function(ctx, pos, data) {
+	BGExpand.fillCorners = function(ctx, pos, data) {
 		
 		var sw = pos.dx;
 		var sh = pos.dy;
@@ -267,7 +267,7 @@ var JWR = JWR || {};
 	/*
 	 * fadeEdges
 	*/
-	DBG.fadeEdges = function(canvas,range) {
+	BGExpand.fadeEdges = function(canvas,range) {
 		
 		var radius = (canvas.height>canvas.width) ? canvas.height/2 : canvas.width/2;
 		var diff = radius-range;
@@ -300,7 +300,7 @@ var JWR = JWR || {};
 	/*
 	 * gradientLeft
 	*/  
-	DBG.gradientLeft = function(ctx,sx,sy,sw,sh,srcx,size,data) {
+	BGExpand.gradientLeft = function(ctx,sx,sy,sw,sh,srcx,size,data) {
 		
 		var position,pixel;
 		var grd = ctx.createLinearGradient(sx, sy, sx, sy+sh);
@@ -335,7 +335,7 @@ var JWR = JWR || {};
 	/*
 	 * gradientRight
 	*/  
-	DBG.gradientRight = function(ctx,sx,sy,sw,sh,srcx,size,data) {
+	BGExpand.gradientRight = function(ctx,sx,sy,sw,sh,srcx,size,data) {
 		
 		var position,pixel;
 		var grd = ctx.createLinearGradient(sx, sy, sx, sy+sh);
@@ -370,7 +370,7 @@ var JWR = JWR || {};
 	/*
 	 * gradientTop
 	*/
-	DBG.gradientTop = function(ctx,sx,sy,sw,sh,srcy,size,data) {
+	BGExpand.gradientTop = function(ctx,sx,sy,sw,sh,srcy,size,data) {
 		
 		//console.log(ctx,sx,sy,sw,sh,srcy,size,data);
 		
@@ -409,7 +409,7 @@ var JWR = JWR || {};
 	/*
 	 * gradientBottom
 	*/
-	DBG.gradientBottom = function(ctx,sx,sy,sw,sh,srcy,size,data) {
+	BGExpand.gradientBottom = function(ctx,sx,sy,sw,sh,srcy,size,data) {
 		
 		//console.log(ctx,sx,sy,sw,sh,srcy,size,data);
 		
@@ -448,7 +448,7 @@ var JWR = JWR || {};
 	/*
 	 * centerImage
 	*/
-	DBG.centerImage = function(iw,ih,cw,ch) {
+	BGExpand.centerImage = function(iw,ih,cw,ch) {
 		
 		var pos = {sx:0,sy:0,sw:iw,sh:ih,dx:'',dy:'',dw:'',dh:''};
 		
@@ -475,7 +475,7 @@ var JWR = JWR || {};
 	/*
 	 * getBgGrad
 	*/
-	DBG.getBgGrad = function(imageData, orientation, dimension, end, scale, pos) {
+	BGExpand.getBgGrad = function(imageData, orientation, dimension, end, scale, pos) {
 		
 		var bg, first, last, oldWebKit;
 		var valueString = '(' + orientation + ',';
@@ -542,7 +542,7 @@ var JWR = JWR || {};
 	/*
 	 * getComplementaryBgGrad
 	*/
-	DBG.getComplementaryBgGrad = function(imageData, orientation, dimension, end, scale) {
+	BGExpand.getComplementaryBgGrad = function(imageData, orientation, dimension, end, scale) {
 		
 		var bg;
 		var last;
@@ -604,7 +604,7 @@ var JWR = JWR || {};
 	/*
 	 * getAverageBgColor
 	*/
-	DBG.getAverageBgColor = function(pos,imageData) {
+	BGExpand.getAverageBgColor = function(pos,imageData) {
 	
 		var topLeft,topRight,bottomLeft,bottomRight,r,g,b;
 
@@ -630,6 +630,6 @@ var JWR = JWR || {};
 	
 	};
 	
-	JWR.DBG = DBG;
+	JWR.BGExpand = BGExpand;
 
 }(jQuery));
