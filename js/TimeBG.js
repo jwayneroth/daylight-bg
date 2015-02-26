@@ -8,9 +8,9 @@ var JWR = JWR || {};
 	TimeBG.display = null;
 	TimeBG.updateID = null;
 	TimeBG.stop1 = {r:230, g:230, b:230};
-	TimeBG.initR = 180;
-	TimeBG.initG = 180;
-	TimeBG.initB = 180;
+	TimeBG.initR = 210;
+	TimeBG.initG = 220;
+	TimeBG.initB = 220;
 	TimeBG.stop2 = {r:TimeBG.initR, g:TimeBG.initG, b:TimeBG.initB};
 	TimeBG.seconds = 0;
 	
