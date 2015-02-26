@@ -7,42 +7,62 @@ var JWR = JWR || {};
 	TimeBG.inited = false;
 	TimeBG.display = null;
 	TimeBG.updateID = null;
-	TimeBG.stop1 = {r:0, g:10, b:0};
-	TimeBG.stop2 = {r:0, g:150, b:200};
+	TimeBG.stop1 = {r:230, g:230, b:230};
+	TimeBG.initR = 180;
+	TimeBG.initG = 180;
+	TimeBG.initB = 180;
+	TimeBG.stop2 = {r:TimeBG.initR, g:TimeBG.initG, b:TimeBG.initB};
+	TimeBG.seconds = 0;
 	
 	TimeBG.init = function() {
 		
-		console.log('TimeBG:init');
+		//console.log('TimeBG:init');
 		
 		if(!this.inited) {
 			this.inited = true;
 			this.display = $('#time-bg-display');
+			
 			var d = new Date();
-			this.stop1.r = Math.round((( d.getHours() ) / 24) * 180);
-			this.updateID = setInterval( this.updateDisplay.bind(this), 1000 );
-			this.updateDisplay();
+			
+			var r = ( Math.abs(30 -  d.getSeconds()) / 30 ) * ( 255 - this.initR );
+			this.stop2.r = this.initR + Math.round( r );
+		
+			var g = (( d.getHours() ) / 24) * (255 - this.initG);
+			this.stop2.g = this.initG + Math.round( g );
+			
+			var b = ( Math.abs(30 - d.getMinutes()) / 30) * (255 - this.initB);
+			this.stop2.b = this.initB + Math.round( b );
+			
+			this.updateID = setInterval( this.updateBG.bind(this), 1000 );
+			
 		}
 	
 	};
 	
-	TimeBG.updateDisplay = function() {
-		
-		var d = new Date();
-		this.display.text(d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds());
-		this.updateBG();
-		
-	};
 	
 	TimeBG.updateBG = function() {
 		
-		var d = new Date();
-		this.stop1.b = Math.round((d.getMinutes() / 60) * 180);
-		this.stop2.r = Math.round((Math.abs(30 -  d.getSeconds()) / 30) * 255);
-				
-		var wbk = 'background:-webkit-gradient(linear,left top, left bottom,';
-		var vs = '(top,';
+		var d,b,r,wbk,vs;
 		
-		wbk += 'color-stop(0%, rgb(' + 
+		d = new Date();
+		
+		this.seconds++;
+	
+		if(this.seconds > 60) {
+			this.seconds = 0;
+			b = ( Math.abs(30 - d.getMinutes()) / 30) * (255 - this.initB);
+			this.stop2.b = this.initB + Math.round( b );
+		}
+	
+		r = ( Math.abs(30 -  d.getSeconds()) / 30 ) * ( 255 - this.initR );
+		this.stop2.r = this.initR + Math.round( r );
+		
+		//console.log('r: ' + this.stop2.r + ' g: ' + this.stop2.g + ' b: ' + this.stop2.b);
+		
+		wbk = 'background:-webkit-gradient(linear,left top, left bottom,';
+		vs = '(top,';
+		
+		wbk += 'color-stop(10%, rgb(' + 
 			this.stop1.r + ',' + 
 			this.stop1.g + ',' + 
 			this.stop1.b + ')),';
@@ -50,7 +70,7 @@ var JWR = JWR || {};
 		vs += 'rgb(' + 
 			this.stop1.r + ',' +
 			this.stop1.g + ',' +
-			this.stop1.b + ') 0%, ';
+			this.stop1.b + ') 10%, ';
 			
 		wbk += 'color-stop(100%, rgb(' + 
 			this.stop2.r + ',' + 
@@ -76,8 +96,8 @@ var JWR = JWR || {};
 		
 		//console.log(bg);
 		
-		//$('body').attr('style', bg);
-		$('#header').attr('style', bg);
+		$('#wrapper-all').attr('style', bg);
+		//$('#main').attr('style', bg);
 		
 	};
 
