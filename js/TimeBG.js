@@ -7,7 +7,7 @@ var JWR = JWR || {};
 	TimeBG.inited = false;
 	TimeBG.display = null;
 	TimeBG.updateID = null;
-	TimeBG.stop1 = {r:230, g:230, b:230};
+	TimeBG.stop1 = {r:220, g:220, b:220};
 	TimeBG.initR = 210;
 	TimeBG.initG = 220;
 	TimeBG.initB = 220;
@@ -97,7 +97,7 @@ var JWR = JWR || {};
 		//console.log(bg);
 		
 		$('#wrapper-all').attr('style', bg);
-		//$('#main').attr('style', bg);
+		//$('#banner').attr('style', bg);
 		
 	};
 

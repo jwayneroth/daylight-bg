@@ -10,58 +10,67 @@ var JWR = JWR || {};
 	BGExpand.currentImage = 0;
 	BGExpand.canvasWidth = 900;//$(window).width();//900;
 	BGExpand.canvasHeight = 720;//$(window).height();//720;
-	BGExpand.imageSources = [
-		//"DSCN0024-2.jpg"
-		"IMG_1171.jpg"
-		,"IMG_1155.jpg"
-		,"IMG_0939.JPG" 
-		,"DSCN0028.jpg"
-		,"DSCN0042.jpg"
-		,"000_0912.jpg"
-		,"DSCN0024.jpg"
-	];
+	BGExpand.srcArray = null;
 	BGExpand.imageArray = null;
+	BGExpand.srcIndex = null;
 	
 	/*
 	 * init
 	 * load our images
 	*/
-	BGExpand.init = function() {
+	BGExpand.init = function(src) {
 		
-		console.log('BGExpand:init');
+		console.log('BGExpand:init:' + src);
 		
 		if(!this.inited) {
 			this.inited = false;
 			this.el = $('#canvas-wrapper');
+			this.srcArray = new Array();
+			this.imageArray = new Array();
+			this.srcIndex = -1;
 		}
-		this.imageArray = new Array();
 		
-		for(var i=0; i<this.imageSources.length; i++) {
-			var image = new Image();
-			image.src = 'images/' + this.imageSources[i];
-			this.imageArray.push(image);
-			$(image).on('load', this.onImageLoaded.bind(this));
+		if(src && src != '') this.loadImage(src);
+		
+	};
+	
+	/*
+	 * loadImage
+	*/
+	BGExpand.loadImage = function(src) {
+		
+		var i, image;
+		
+		//console.log('BGExpand:loadImage:' + src);
+		
+		for(i=0; i<this.srcArray.length; i++) {
+			if(this.srcArray[i] == src) {
+				//console.log('\tfound this src');
+				this.srcIndex = i;
+				this.renderImage(this.imageArray[this.srcIndex]);
+				return;
+			}
 		}
+		
+		image = new Image();
+		image.src = src;
+		
+		this.srcArray.push(src);
+		this.imageArray.push(image);
+		this.srcIndex++;
+		
+		$(image).on('load', this.onImageLoaded.bind(this));
 		
 	};
 	
 	/*
 	 * onImageLoaded
 	*/
-	BGExpand.onImageLoaded = function() {
+	BGExpand.onImageLoaded = function(evt) {
 		
-		this.imagesLoaded++;
+		//console.log('BGExpand:onImageLoaded:' +  evt.currentTarget.src);
 		
-		//if done loading
-		if(this.imagesLoaded >= this.imageSources.length) {
-			
-			//add click event to wrapper
-			this.el.click(this.onWrapperClick.bind(this));
-			
-			//render first image
-			this.renderImage(this.imageArray[this.currentImage]);
-	
-		}
+		this.renderImage(this.imageArray[this.imageArray.length - 1]);
 		
 	};
 	
@@ -85,8 +94,9 @@ var JWR = JWR || {};
 	 * getCurrentImage
 	*/
 	BGExpand.getCurrentImageName = function() {
-		if(this.imageArray) {
-			return this.imageSources[this.currentImage];
+		console.log('getCurrentImageName:' + this.srcIndex);
+		if(this.srcArray) {
+			return this.srcArray[this.srcIndex];
 		}
 	};
 	
@@ -95,6 +105,8 @@ var JWR = JWR || {};
 	 * blend image edge into the canvas behind it
 	*/
 	BGExpand.renderImage = function(image) {
+		
+		//console.log('BGExpand:renderImage', image);
 		
 		var canvas = document.createElement('canvas');
 		

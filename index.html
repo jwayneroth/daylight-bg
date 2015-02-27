@@ -13,56 +13,89 @@
 		<link rel="stylesheet" href="css/style.css">
 		<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 	</head>
-	<body><div id="wrapper-all">
+	<body>
 		<!--[if lt IE 8]>
 			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
 		
-		<header id="header">
+		<!--<header id="header">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12 col-md-12">
-						<!--<h3 id="time-bg-display"></h3>-->
 					</div>
 				</div>
 			</div>
-		</header>
+		</header>-->
+		<div id="wrapper-all">
 		
-		<section id="main">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-sm-11 col-md-11 text-center">
-						<div id="image-wrapper">
-							<div id="canvas-wrapper"></div>
-							<div id="zoom-wrapper">
-								<div id="zoom-inner"></div>
+			<section id="banner">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div id="controls-wrapper">
+								<button class="btn btn-default" id="zoom-button">ZOOM</button>
+								<button class="btn btn-default disabled" id="zoom-close-button">CLOSE</button>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-1 col-md-1">
-						<div id="controls-wrapper">
-							<button class="btn btn-default" id="zoom-button">ZOOM</button>
-							<button class="btn btn-default disabled" id="zoom-close-button">CLOSE</button>
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<div id="image-wrapper">
+								<div id="canvas-wrapper"></div>
+								<div id="zoom-wrapper"><div id="zoom-inner"></div></div>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-xs-12 col-md-12">
-						<div id="thumb-wrapper"></div>
+			</section>
+			
+			<section id="main">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+							<div id="thumb-wrapper">
+								<div class="row">
+									<div class="col-xs-4 col-sm-2">
+										<a href="images/000_0912.jpg"><img class="img-responsive" src="images/thumbs/000_0912.jpg" alt="" width="" height=""></a>
+									</div>
+									<div class="col-xs-4 col-sm-2">
+										<a href="images/DSCN0024.jpg"><img class="img-responsive" src="images/thumbs/DSCN0024.jpg" alt="" width="" height=""></a>
+									</div>
+									<div class="col-xs-4 col-sm-2">
+										<a href="images/DSCN0028.jpg"><img class="img-responsive" src="images/thumbs/DSCN0028.jpg" alt="" width="" height=""></a>
+									</div>
+									<div class="col-xs-4 col-sm-2">
+										<a href="images/DSCN0042.jpg"><img class="img-responsive" src="images/thumbs/DSCN0042.jpg" alt="" width="" height=""></a>
+									</div>
+									<div class="col-xs-4 col-sm-2">
+										<a href="images/IMG_0939.jpg"><img class="img-responsive" src="images/thumbs/IMG_0939.jpg" alt="" width="" height=""></a>
+									</div>
+									<div class="col-xs-4 col-sm-2">
+										<a href="images/IMG_1155.jpg"><img class="img-responsive" src="images/thumbs/IMG_1155.jpg" alt="" width="" height=""></a>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-4 col-sm-2">
+										<a href="images/IMG_1171.jpg"><img class="img-responsive" src="images/thumbs/IMG_1171.jpg" alt="" width="" height=""></a>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
 		
-		<footer id="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-md-12">
-						<h3 id="time-bg-display"></h3>
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+							<h3 id="time-bg-display"></h3>
+						</div>
 					</div>
 				</div>
-			</div>
-		</footer>
+			</footer>
+		
+		</div>
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>

@@ -8539,25 +8539,30 @@ button.close {
   }
 }
 /* line 4, ../scss/style.scss */
-#wrapper-all {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+body {
+  background-color: gainsboro;
 }
 
-/* line 20, ../scss/style.scss */
+/* line 8, ../scss/style.scss */
+#wrapper-all {
+  /*position:fixed;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;*/
+}
+
+/* line 24, ../scss/style.scss */
 canvas {
   width: 100%;
   height: 100%;
 }
 
-/* line 25, ../scss/style.scss */
+/* line 29, ../scss/style.scss */
 #image-wrapper {
   position: relative;
   overflow: hidden;
@@ -8565,7 +8570,7 @@ canvas {
   height: auto;
 }
 
-/* line 36, ../scss/style.scss */
+/* line 40, ../scss/style.scss */
 #zoom-wrapper {
   position: absolute;
   left: 0;
@@ -8574,7 +8579,7 @@ canvas {
   height: 100%;
   overflow: hidden;
 }
-/* line 44, ../scss/style.scss */
+/* line 48, ../scss/style.scss */
 #zoom-wrapper.active {
   overflow: scroll;
 }
