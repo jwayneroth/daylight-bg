@@ -28,6 +28,7 @@ var JWR = JWR || {};
 	*/
 	Zoom.onZoomButtonClick = function() {
 		if(this.zoomButton.hasClass('disabled')) return;
+		this.active = true;
 		this.loadImage();
 		this.zoomButton.addClass('disabled');
 		this.closeButton.removeClass('disabled');
@@ -38,10 +39,29 @@ var JWR = JWR || {};
 	*/
 	Zoom.onCloseButtonClick = function() {
 		if(this.closeButton.hasClass('disabled')) return;
+		this.close();
+	};
+	
+	/*
+	 * checkClose
+	 */
+	 Zoom.checkClose = function() {
+	 	
+	 	if(this.active) this.close();
+	 	
+	 };
+	 
+	/*
+	 * close
+	*/
+	Zoom.close = function() {
+		
+		this.active = false;
 		this.innerEl.empty();
 		this.el.removeClass('active');
 		this.closeButton.addClass('disabled');
 		this.zoomButton.removeClass('disabled');
+	
 	};
 	
 	/*

@@ -12,6 +12,7 @@ jQuery(document).ready(function($) {
 		//console.log(evt);
 		evt.preventDefault();
 		JWR.BGExpand.loadImage(evt.currentTarget.href);
+		JWR.Zoom.checkClose();
 		return false;
 	});
 	

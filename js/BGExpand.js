@@ -6,14 +6,11 @@ var JWR = JWR || {};
 	
 	BGExpand.inited = false;
 	BGExpand.el = null;
-	BGExpand.imagesLoaded = 0;
-	BGExpand.currentImage = 0;
+	BGExpand.currentImageName = null;
 	BGExpand.canvasWidth = 900;//$(window).width();//900;
 	BGExpand.canvasHeight = 720;//$(window).height();//720;
-	BGExpand.srcArray = null;
-	BGExpand.imageArray = null;
-	BGExpand.srcIndex = null;
-	
+	BGExpand.images = null;
+
 	/*
 	 * init
 	 * load our images
@@ -25,9 +22,7 @@ var JWR = JWR || {};
 		if(!this.inited) {
 			this.inited = false;
 			this.el = $('#canvas-wrapper');
-			this.srcArray = new Array();
-			this.imageArray = new Array();
-			this.srcIndex = -1;
+			this.images = {};
 		}
 		
 		if(src && src != '') this.loadImage(src);
@@ -39,25 +34,28 @@ var JWR = JWR || {};
 	*/
 	BGExpand.loadImage = function(src) {
 		
-		var i, image;
+		var i, image, nameArr, name;
 		
 		//console.log('BGExpand:loadImage:' + src);
 		
-		for(i=0; i<this.srcArray.length; i++) {
-			if(this.srcArray[i] == src) {
-				//console.log('\tfound this src');
-				this.srcIndex = i;
-				this.renderImage(this.imageArray[this.srcIndex]);
-				return;
-			}
+		nameArr = src.split('/');
+		name = nameArr[nameArr.length - 1];
+		
+		console.log(name);
+		
+		if(this.currentImageName == name) return;
+		
+		if(this.images[name]) {
+			console.log('have '+name+' already');
+			this.currentImageName = name;
+			this.renderImage(this.images[name])
+			return;
 		}
 		
 		image = new Image();
 		image.src = src;
 		
-		this.srcArray.push(src);
-		this.imageArray.push(image);
-		this.srcIndex++;
+		this.images[name] = image;
 		
 		$(image).on('load', this.onImageLoaded.bind(this));
 		
@@ -70,7 +68,13 @@ var JWR = JWR || {};
 		
 		//console.log('BGExpand:onImageLoaded:' +  evt.currentTarget.src);
 		
-		this.renderImage(this.imageArray[this.imageArray.length - 1]);
+		 var nameArr, name;
+		 
+		nameArr = evt.currentTarget.src.split('/');
+		name = nameArr[nameArr.length - 1];
+		
+		this.currentImageName = name;
+		this.renderImage(this.images[name]);
 		
 	};
 	
@@ -95,9 +99,7 @@ var JWR = JWR || {};
 	*/
 	BGExpand.getCurrentImageName = function() {
 		console.log('getCurrentImageName:' + this.srcIndex);
-		if(this.srcArray) {
-			return this.srcArray[this.srcIndex];
-		}
+		return this.currentImageName;
 	};
 	
 	/*
