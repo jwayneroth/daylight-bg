@@ -9,7 +9,10 @@
 
 		<link rel="apple-touch-icon" href="apple-touch-icon.png">
 		<!-- Place favicon.ico in the root directory -->
-
+		
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
+		
 		<link rel="stylesheet" href="css/style.css">
 		<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 	</head>
@@ -31,18 +34,38 @@
 			<section id="banner">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-12">
-							<div id="controls-wrapper">
-								<button class="btn btn-default" id="zoom-button">ZOOM</button>
-								<button class="btn btn-default disabled" id="zoom-close-button">CLOSE</button>
-							</div>
-						</div>
-					</div>
-					<div class="row">
 						<div class="col-md-12 text-center">
 							<div id="image-wrapper">
 								<div id="canvas-wrapper"></div>
 								<div id="zoom-wrapper"><div id="zoom-inner"></div></div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-3 col-md-3 col-sm-push-9 col-md-push-9">
+							<div id="controls-wrapper">
+								<button type="button" class="btn btn-default" aria-label="Left Align" id="zoom-button">
+									<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+								</button>
+								<button type="button" class="btn btn-default disabled" aria-label="Left Align" id="zoom-close-button">
+									<span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span>
+								</button>
+								<!--<button type="button" class="btn btn-default" aria-label="Left Align" id="zoom-close-button">
+									<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+								</button>-->
+							</div>
+						</div>
+						<div class="col-sm-9 col-md-9 col-sm-pull-3 col-md-pull-3">
+							<div class="row">
+								<div class="col-sm-4">
+									<h3 class="" id="title">Jonathan Roth</h3>
+								</div>
+								<div class="col-sm-8">
+									<ul class="nav">
+										<li>contact</li>
+										<li>github</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -56,27 +79,83 @@
 							<div id="thumb-wrapper">
 								<div class="row">
 									<div class="col-xs-4 col-sm-2">
-										<a href="images/000_0912.jpg"><img class="img-responsive" src="images/thumbs/000_0912.jpg" alt="" width="" height=""></a>
+										<div class="thumb">
+											<a href="images/000_0912.jpg"><img class="img-responsive" src="images/thumbs/000_0912.jpg" alt="" width="" height=""></a>
+											<div class="thumb-overlay">
+												<div class="inner">
+													<h6>Painting Title</h6>
+													<p>painting information<br>here and here<br>and here</p>
+												</div>
+											</div>
+										</div>
 									</div>
 									<div class="col-xs-4 col-sm-2">
-										<a href="images/DSCN0024.jpg"><img class="img-responsive" src="images/thumbs/DSCN0024.jpg" alt="" width="" height=""></a>
+										<div class="thumb">
+											<a href="images/IMG_0965.jpg"><img class="img-responsive" src="images/thumbs/IMG_0965.jpg" alt="" width="" height=""></a>
+											<div class="thumb-overlay">
+												<div class="inner">
+													<h6>Painting Title</h6>
+													<p>painting information<br>here and here<br>and here</p>
+												</div>
+											</div>
+										</div>
 									</div>
 									<div class="col-xs-4 col-sm-2">
-										<a href="images/DSCN0028.jpg"><img class="img-responsive" src="images/thumbs/DSCN0028.jpg" alt="" width="" height=""></a>
+										<div class="thumb">
+											<a href="images/DSCN0028.jpg"><img class="img-responsive" src="images/thumbs/DSCN0028.jpg" alt="" width="" height=""></a>
+											<div class="thumb-overlay">
+												<div class="inner">
+													<h6>Painting Title</h6>
+													<p>painting information<br>here and here<br>and here</p>
+												</div>
+											</div>
+										</div>
 									</div>
 									<div class="col-xs-4 col-sm-2">
-										<a href="images/DSCN0042.jpg"><img class="img-responsive" src="images/thumbs/DSCN0042.jpg" alt="" width="" height=""></a>
+										<div class="thumb">
+											<a href="images/DSCN0042.jpg"><img class="img-responsive" src="images/thumbs/DSCN0042.jpg" alt="" width="" height=""></a>
+											<div class="thumb-overlay">
+												<div class="inner">
+													<h6>Painting Title</h6>
+													<p>painting information<br>here and here<br>and here</p>
+												</div>
+											</div>
+										</div>
 									</div>
 									<div class="col-xs-4 col-sm-2">
-										<a href="images/IMG_0939.jpg"><img class="img-responsive" src="images/thumbs/IMG_0939.jpg" alt="" width="" height=""></a>
+										<div class="thumb">
+											<a href="images/IMG_0939.jpg"><img class="img-responsive" src="images/thumbs/IMG_0939.jpg" alt="" width="" height=""></a>
+											<div class="thumb-overlay">
+												<div class="inner">
+													<h6>Painting Title</h6>
+													<p>painting information<br>here and here<br>and here</p>
+												</div>
+											</div>
+										</div>
 									</div>
 									<div class="col-xs-4 col-sm-2">
-										<a href="images/IMG_1155.jpg"><img class="img-responsive" src="images/thumbs/IMG_1155.jpg" alt="" width="" height=""></a>
+										<div class="thumb">
+											<a href="images/IMG_1155.jpg"><img class="img-responsive" src="images/thumbs/IMG_1155.jpg" alt="" width="" height=""></a>
+											<div class="thumb-overlay">
+												<div class="inner">
+													<h6>Painting Title</h6>
+													<p>painting information<br>here and here<br>and here</p>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-xs-4 col-sm-2">
-										<a href="images/IMG_1171.jpg"><img class="img-responsive" src="images/thumbs/IMG_1171.jpg" alt="" width="" height=""></a>
+										<div class="thumb">
+											<a href="images/IMG_1171.jpg"><img class="img-responsive" src="images/thumbs/IMG_1171.jpg" alt="" width="" height=""></a>
+											<div class="thumb-overlay">
+												<div class="inner">
+													<h6>Painting Title</h6>
+													<p>painting information<br>here and here<br>and here</p>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -85,7 +164,7 @@
 				</div>
 			</section>
 		
-			<footer id="footer">
+			<!--<footer id="footer">
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12 col-md-12">
@@ -93,7 +172,7 @@
 						</div>
 					</div>
 				</div>
-			</footer>
+			</footer>-->
 		
 		</div>
 		

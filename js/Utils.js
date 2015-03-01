@@ -136,9 +136,9 @@ Utils.getPixelObject = function(imageData, x, y) {
  Utils.getComplement = function(rgb)
 {
 temprgb = rgb;
-temphsv=RGB2HSV(temprgb);
-temphsv.hue=HueShift(temphsv.hue,180.0);
-temprgb=HSV2RGB(temphsv);
+temphsv=this.RGB2HSV(temprgb);
+temphsv.hue=this.HueShift(temphsv.hue,180.0);
+temprgb=this.HSV2RGB(temphsv);
 return temprgb;
 }
 
@@ -150,8 +150,8 @@ temprgb=HSV2RGB(temphsv);*/
 
 Utils.RGB2HSV = function(rgb) {
 hsv = new Object();
-max=max3(rgb.r,rgb.g,rgb.b);
-dif=max-min3(rgb.r,rgb.g,rgb.b);
+max=this.max3(rgb.r,rgb.g,rgb.b);
+dif=max-this.min3(rgb.r,rgb.g,rgb.b);
 hsv.saturation=(max==0.0)?0:(100*dif/max);
 if (hsv.saturation==0) hsv.hue=0;
 else if (rgb.r==max) hsv.hue=60.0*(rgb.g-rgb.b)/dif;

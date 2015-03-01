@@ -8,9 +8,12 @@ var JWR = JWR || {};
 	TimeBG.display = null;
 	TimeBG.updateID = null;
 	TimeBG.stop1 = {r:220, g:220, b:220};
-	TimeBG.initR = 210;
-	TimeBG.initG = 220;
-	TimeBG.initB = 220;
+	TimeBG.initR = 230;
+	TimeBG.initG = 230;
+	TimeBG.initB = 230;
+	TimeBG.redRange = 20;
+	TimeBG.greenRange = 20;
+	TimeBG.blueRange = 20;
 	TimeBG.stop2 = {r:TimeBG.initR, g:TimeBG.initG, b:TimeBG.initB};
 	TimeBG.seconds = 0;
 	
@@ -24,13 +27,13 @@ var JWR = JWR || {};
 			
 			var d = new Date();
 			
-			var r = ( Math.abs(30 -  d.getSeconds()) / 30 ) * ( 255 - this.initR );
+			var r = ( Math.abs(30 -  d.getSeconds()) / 30 ) * (this.redRange);//255 - this.initR );
 			this.stop2.r = this.initR + Math.round( r );
 		
-			var g = (( d.getHours() ) / 24) * (255 - this.initG);
+			var g = (( d.getHours() ) / 24) * (this.greenRange);//255 - this.initG);
 			this.stop2.g = this.initG + Math.round( g );
 			
-			var b = ( Math.abs(30 - d.getMinutes()) / 30) * (255 - this.initB);
+			var b = ( Math.abs(30 - d.getMinutes()) / 30) * (this.blueRange);//255 - this.initB);
 			this.stop2.b = this.initB + Math.round( b );
 			
 			this.updateID = setInterval( this.updateBG.bind(this), 1000 );
@@ -50,11 +53,11 @@ var JWR = JWR || {};
 	
 		if(this.seconds > 60) {
 			this.seconds = 0;
-			b = ( Math.abs(30 - d.getMinutes()) / 30) * (255 - this.initB);
+			b = ( Math.abs(30 - d.getMinutes()) / 30) * (this.blueRange);//255 - this.initB);
 			this.stop2.b = this.initB + Math.round( b );
 		}
 	
-		r = ( Math.abs(30 -  d.getSeconds()) / 30 ) * ( 255 - this.initR );
+		r = ( Math.abs(30 -  d.getSeconds()) / 30 ) * (this.redRange);// 255 - this.initR );
 		this.stop2.r = this.initR + Math.round( r );
 		
 		//console.log('r: ' + this.stop2.r + ' g: ' + this.stop2.g + ' b: ' + this.stop2.b);
@@ -96,9 +99,12 @@ var JWR = JWR || {};
 		
 		//console.log(bg);
 		
-		$('#wrapper-all').attr('style', bg);
-		//$('#banner').attr('style', bg);
-		
+		//$('#wrapper-all').attr('style', bg);
+		$('#banner').attr('style', bg);
+		//$('#main').css('background-color', 'rgb(' + this.stop2.r + ',' + this.stop2.g + ',' + this.stop2.b + ')');
+		//var mainBG = JWR.Utils.getComplement(this.stop2);
+		//console.log(mainBG);
+		//$('#main').css('background-color', 'rgb(' + mainBG.r + ',' + mainBG.g + ',' + mainBG.b + ')');
 	};
 
 	JWR.TimeBG = TimeBG;

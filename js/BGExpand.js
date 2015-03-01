@@ -7,8 +7,8 @@ var JWR = JWR || {};
 	BGExpand.inited = false;
 	BGExpand.el = null;
 	BGExpand.currentImageName = null;
-	BGExpand.canvasWidth = 900;//$(window).width();//900;
-	BGExpand.canvasHeight = 720;//$(window).height();//720;
+	BGExpand.canvasMaxW = 1140;//900;//$(window).width();//900;
+	BGExpand.canvasMaxH = 720;//$(window).height();//720;
 	BGExpand.images = null;
 
 	/*
@@ -112,25 +112,26 @@ var JWR = JWR || {};
 		
 		var canvas = document.createElement('canvas');
 		
-		canvas.width = this.canvasWidth;
-		canvas.height = this.canvasHeight;
+		canvas.width = this.canvasMaxW;
+		canvas.height = this.canvasMaxH;
+		
 		context = canvas.getContext("2d");
-			
+		
 		var pos = this.centerImage(image.width,image.height,canvas.width,canvas.height);
 		
 		context.drawImage(image,pos.sx,pos.sy,pos.sw,pos.sh,pos.dx,pos.dy,pos.dw,pos.dh);
 		
 		var scale = 50;
-		var data = context.getImageData(0,0,this.canvasWidth,this.canvasHeight);
+		var data = context.getImageData(0,0,this.canvasMaxW,this.canvasMaxH);
 		
 		this.gradientTop(context, pos.dx,0, pos.dw,pos.dy, pos.dy,scale,data);
-		this.gradientBottom(context, pos.dx,pos.dy+pos.dh, pos.dw,this.canvasHeight - (pos.dy+pos.dh),pos.dy+pos.dh-1,scale,data);
+		this.gradientBottom(context, pos.dx,pos.dy+pos.dh, pos.dw,this.canvasMaxH - (pos.dy+pos.dh),pos.dy+pos.dh-1,scale,data);
 		this.gradientLeft(context,0,pos.dy,pos.dx,pos.dh,pos.dx,scale,data);
-		this.gradientRight(context,pos.dx+pos.dw,pos.dy,this.canvasWidth-pos.dx-pos.dw,pos.dh,pos.dw+pos.dx-1,scale,data);		
+		this.gradientRight(context,pos.dx+pos.dw,pos.dy,this.canvasMaxW-pos.dx-pos.dw,pos.dh,pos.dw+pos.dx-1,scale,data);		
 		//this.gradientCorners(context, pos, data);
 		this.fillCorners(context, pos, data);
 		
-		//data = context.getImageData(0,0,this.canvasWidth,this.canvasHeight);
+		//data = context.getImageData(0,0,this.canvasMaxW,this.canvasMaxH);
 		//var fallback = 'background:' + this.getAverageBgColor(pos, data) + ';';
 		//var bgStyles = this.getBgGrad(data, 'top', pos.dh, 0, 50, pos);
 		//$('body').attr('style', bgStyles);
